@@ -1,0 +1,17 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Wpm\\" : "core",
+      "WpmPack\\Acf\\" : "pack/acf",
+      "WpmPack\\Img\\" : "pack/img",
+      "WpmPack\\Sort\\" : "pack/sort",
+      "WpmPack\\Test\\" : "pack/test"
+    },
+    "files" : [
+      "core/functions.php"
+    ]
+  },
+  "require": {
+    "tightenco/collect": "^5.6"
+  }
+}
