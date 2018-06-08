@@ -52,12 +52,20 @@ class Acf {
 
 	protected function getField()
 	{
+		if(!function_exists('get_field')) {
+			return null;
+		}
+
 		return get_field($this->selector, $this->post_id, $this->format_value);
 	}
 
 
 	protected function getFields()
 	{
+		if(!function_exists('get_fields')) {
+			return null;
+		}
+
 		return get_fields($this->post_id);
 	}
 
