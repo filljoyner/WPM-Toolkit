@@ -45,29 +45,4 @@ class Nav
     {
         return get_the_posts_pagination($args);
     }
-    
-    
-    /**
-     * Return a menu from the provided location and optional arguments
-     *
-     * @param null   $location
-     * @param string $argA
-     *
-     * @return false|object|void
-     */
-    public function menu($location=null, $argA='')
-    {
-        $args = [
-            'container'      => false,
-            'menu_class'     => (is_string($argA) ? $argA : 'nav'),
-            'theme_location' => $location,
-            'echo'           => false
-        ];
-        
-        if(is_array($argA)) {
-            $args = array_merge($args, $argA);
-        }
-        
-        return wp_nav_menu($args);
-    }
 }
