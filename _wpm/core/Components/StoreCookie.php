@@ -96,7 +96,7 @@ class StoreCookie implements StoreInterface
 	 *
 	 * @return $this
 	 */
-	public function http_only($http_only)
+	public function httpOnly($http_only)
     {
     	$this->http_only = $http_only;
     	return $this;
@@ -140,6 +140,18 @@ class StoreCookie implements StoreInterface
         
         return (isset($vars[$key]) ? $vars[$key] : null);
     }
+
+
+    /**
+     * Create a cookie with all settings
+     *
+     * @param $key
+     * @param null $value
+     */
+    public function create()
+    {
+        $this->setCookie('');
+    }
     
     
     /**
@@ -181,13 +193,13 @@ class StoreCookie implements StoreInterface
 
 
 	/**
-	 * Delete all stored cookie data
+	 * Remove all stored cookie data
 	 *
 	 * @return bool
 	 */
-	public function delete()
+	public function removeAll()
     {
-    	return $this->set_cookie('');
+    	return $this->setCookie('');
     }
 
 
@@ -219,7 +231,7 @@ class StoreCookie implements StoreInterface
 	 */
 	private function setCookieStore($vars)
     {
-    	return $this->set_cookie(
+    	return $this->setCookie(
     		json_encode($vars)
 	    );
     }
@@ -232,7 +244,7 @@ class StoreCookie implements StoreInterface
 	 *
 	 * @return bool
 	 */
-	private function set_cookie($string)
+	private function setCookie($string)
     {
     	return setcookie($this->cookie_name, $string, $this->expires_in, $this->path, $this->domain, $this->secure, $this->http_only);
     }
