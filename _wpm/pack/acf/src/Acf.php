@@ -45,7 +45,7 @@ class Acf {
 	public function get()
 	{
 		if($this->selector) {
-			return collect( $this->getField() );
+			return $this->getField();
 		}
 		return $this->getFields();
 	}
