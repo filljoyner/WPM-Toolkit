@@ -164,6 +164,12 @@ class WpmTest
     }
 
 
+    public function isNotIn($valA, $valB) {
+        if(!in_array($valA, $valB)) return $this->result(true);
+        return $this->result(false);
+    }
+
+
     public function strContains($str, $find) {
         if (strpos($str, $find) !== false) return $this->result(true);
         return $this->result(false);
