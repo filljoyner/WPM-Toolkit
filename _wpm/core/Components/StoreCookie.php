@@ -199,7 +199,7 @@ class StoreCookie implements StoreInterface
 	 */
 	public function removeAll()
     {
-    	return $this->setCookie('');
+    	return $this->setCookie([]);
     }
 
 
@@ -210,9 +210,11 @@ class StoreCookie implements StoreInterface
 	 */
 	private function getCookieStore()
     {
-    	if(empty($_COOKIE[$this->cookie_name]))  return [];
+    	if(empty($_COOKIE[$this->cookie_name])) {
+    		return [];
+	    }
 
-    	$data = $_COOKIE[$this->cookie_name];
+    	$data = stripslashes($_COOKIE[$this->cookie_name]);
 
     	if($data == '') {
     		return [];
@@ -231,9 +233,7 @@ class StoreCookie implements StoreInterface
 	 */
 	private function setCookieStore($vars)
     {
-    	return $this->setCookie(
-    		json_encode($vars)
-	    );
+    	return $this->setCookie($vars);
     }
 
 
@@ -244,8 +244,13 @@ class StoreCookie implements StoreInterface
 	 *
 	 * @return bool
 	 */
-	private function setCookie($string)
+	private function setCookie($vars=[])
     {
+    	$string = '';
+    	if($vars) {
+    		$string = json_encode($vars);
+	    }
+	    $_COOKIE[$this->cookie_name] = $string;
     	return setcookie($this->cookie_name, $string, $this->expires_in, $this->path, $this->domain, $this->secure, $this->http_only);
     }
 }
