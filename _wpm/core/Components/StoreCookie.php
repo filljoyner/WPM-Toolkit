@@ -165,8 +165,8 @@ class StoreCookie implements StoreInterface
         $vars = $this->getCookieStore();
         
         $vars[$key] = $value;
-        
-        $this->setVarStore($vars);
+
+        $this->setCookieStore($vars);
     }
     
     
