@@ -605,12 +605,13 @@ class QueryPostType
      * Setter for post__in arguments
      *
      * @param  array   $post_ids
+     * 
      * @return $this
      */
     public function postIn($post_ids)
     {
-        if (is_array($ids)) {
-            $this->args['post__in'] = $ids;
+        if (is_array($post_ids)) {
+            $this->args['post__in'] = $post_ids;
         }
         return $this;
     }
@@ -619,12 +620,13 @@ class QueryPostType
      * Setter for post__not_in arguments
      *
      * @param  array   $post_ids
+     * 
      * @return $this
      */
     public function postNotIn($post_ids)
     {
-        if (is_array($ids)) {
-            $this->args['post__not_in'] = $ids;
+        if (is_array($post_ids)) {
+            $this->args['post__not_in'] = $post_ids;
         }
         return $this;
     }
