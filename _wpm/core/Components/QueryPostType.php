@@ -600,6 +600,34 @@ class QueryPostType
         }
         return $this;
     }
+
+    /**
+     * Setter for post__in arguments
+     *
+     * @param  array   $post_ids
+     * @return $this
+     */
+    public function postIn($post_ids)
+    {
+        if (is_array($ids)) {
+            $this->args['post__in'] = $ids;
+        }
+        return $this;
+    }
+
+    /**
+     * Setter for post__not_in arguments
+     *
+     * @param  array   $post_ids
+     * @return $this
+     */
+    public function postNotIn($post_ids)
+    {
+        if (is_array($ids)) {
+            $this->args['post__not_in'] = $ids;
+        }
+        return $this;
+    }
     
     
     /**
